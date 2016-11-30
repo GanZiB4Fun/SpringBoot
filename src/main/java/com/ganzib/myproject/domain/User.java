@@ -1,12 +1,28 @@
 package com.ganzib.myproject.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * Created by GanZiB on 16/11/29.
  */
+@Entity
 public class User {
-    public Long id;
-    public String name;
-    public Integer age;
+    @Id
+    @GeneratedValue
+    private Long id;
+    @Column(nullable = false)
+    private String name;
+    @Column(nullable = false)
+    private Integer age;
+
+    public User() {}
+    public User(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
 
     public Long getId() {
         return id;
