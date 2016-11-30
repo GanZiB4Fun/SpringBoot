@@ -1,16 +1,22 @@
 package com.ganzib;
 
 import com.ganzib.myproject.web.UserController;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.mock.web.MockServletContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import javax.annotation.Resource;
+
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -22,6 +28,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class ApplicationTests {
 
 	private MockMvc mvc;
+
+	@Autowired//TODO 有错
+	private StringRedisTemplate stringRedisTemplate;
 
 	@Before
 	public void setUp() throws Exception {
@@ -76,6 +85,17 @@ public class ApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().string(equalTo("[]")));
 
+	}
+
+	/**
+	 * Redis测试
+	 * @throws Exception
+	 */
+	@Test //TODO 有错
+	public void test() throws Exception{
+		//保存字符串
+		stringRedisTemplate.opsForValue().set("aaa","111");
+		Assert.assertEquals("111",stringRedisTemplate.opsForValue().get("aaa"));
 	}
 
 }
