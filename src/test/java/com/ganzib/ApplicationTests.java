@@ -1,6 +1,6 @@
 package com.ganzib;
 
-import com.ganzib.web.UserController;
+import com.ganzib.myproject.web.UserController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

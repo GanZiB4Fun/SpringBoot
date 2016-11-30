@@ -1,4 +1,4 @@
-package com.ganzib.domain;
+package com.ganzib.myproject.domain;
 
 /**
  * Created by GanZiB on 16/11/29.

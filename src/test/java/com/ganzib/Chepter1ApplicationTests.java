@@ -1,6 +1,6 @@
 package com.ganzib;
 
-import com.ganzib.web.HelloController;
+import com.ganzib.myproject.web.HelloController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

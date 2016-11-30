@@ -1,6 +1,6 @@
-package com.ganzib.web;
+package com.ganzib.myproject.web;
 
-import com.ganzib.domain.User;
+import com.ganzib.myproject.domain.User;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -24,7 +24,7 @@ public class UserController {
      * @return
      */
     @ApiOperation(value="获取用户列表", notes="")
-    @RequestMapping(value = "/",method = RequestMethod.GET)
+    @RequestMapping(value = {""},method = RequestMethod.GET)
     public List<User> getUserList(){
         List<User> userList = new ArrayList<User>(users.values());
         return userList;
@@ -38,7 +38,7 @@ public class UserController {
      */
     @ApiOperation(value="创建用户", notes="根据User对象创建用户")
     @ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
-    @RequestMapping(value="/", method=RequestMethod.POST)
+    @RequestMapping(value="", method=RequestMethod.POST)
     public String postUser(@ModelAttribute User user) {
         users.put(user.getId(), user);
         return "success";
